@@ -1,5 +1,20 @@
 <h1>All articles</h1>
+<h4><%= link_to "Новый пост", new_article_path %></h4>
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Просмотреть</th>
+        <th>Время</th>
+    </tr>
 <% @articles.each do |article| %>
-<h2><%= article.title %></h2>
-<p><%= article.description %></p>
+<tr>
+    <td><h2><%= article.title %></h2></td>
+    <td><p><%= article.description %></p></td>
+    <td><%= link_to "Просмотреть", article_path(article)%></td>
+    <td><%= link_to "Изменить", edit_article_path(article)%></td>
+    <td><%= link_to "Удалить", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>
+    <td><%= article.updated_at.strftime("%H:%M:%S, %d/%m/%y") %></td>
+</tr>
 <% end %>
+</table>
