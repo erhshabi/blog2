@@ -1,20 +1,48 @@
-<h1>All articles</h1>
-<h4><%= link_to "Новый пост", new_article_path %></h4>
-<table>
-    <tr>
-        <th>Название</th>
-        <th>Описание</th>
-        <th>Просмотреть</th>
-        <th>Время</th>
-    </tr>
-<% @articles.each do |article| %>
-<tr>
-    <td><h2><%= article.title %></h2></td>
-    <td><p><%= article.description %></p></td>
-    <td><%= link_to "Просмотреть", article_path(article)%></td>
-    <td><%= link_to "Изменить", edit_article_path(article)%></td>
-    <td><%= link_to "Удалить", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    <td><%= article.updated_at.strftime("%H:%M:%S, %d/%m/%y") %></td>
-</tr>
-<% end %>
-</table>
+<!--<h1>All articles</h1>-->
+<!--<h4><%= link_to "Новый пост", new_article_path %></h4>-->
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>Название</th>-->
+<!--        <th>Просмотреть</th>-->
+<!--        <th>Изменить</th>-->
+<!--        <th>Удалить</th>-->
+<!--        <th>Время</th>-->
+<!--    </tr>-->
+<!--<% @articles.each do |article| %>-->
+<!--<tr>-->
+<!--    <td><h2><%= article.title %></h2></td>-->
+<!--    <td><%= link_to "Просмотреть", article_path(article)%></td>-->
+<!--    <td><%= link_to "Изменить", edit_article_path(article)%></td>-->
+<!--    <td><%= link_to "Удалить", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>-->
+<!--    <td><%= article.updated_at.strftime("%H:%M:%S, %d/%m/%y") %></td>-->
+<!--</tr>-->
+<!--<% end %>-->
+<!--</table>-->
+<div class="container text-center">
+ <h1>All articles</h1>
+ <h4><%= link_to "Новый пост", new_article_path %></h4>
+ <div class="col-sm-offset-3 col-sm-6">
+ 
+ <% @articles.each do |article| %>
+ <div class="panel panel-default">
+  <div class="panel-heading">
+   <h2><%= article.title %></h2>
+  </div>
+ <div class="panel-body">
+   <%= article.description%>
+ </div>
+ <div class="panel-footer ">
+  <%= link_to "Просмотреть", article_path(article), class:"btn btn-xs btn-primary"%>
+  <%= link_to "Обновить", edit_article_path(article),class:"btn btn-xs btn-success"%>
+  <%= link_to "Удалить", article_path(article),
+                         method: :delete, data: {confirm: "Are you sure?"},
+                         class:"btn btn-xs btn-danger"
+                         %>
+  <%#= article.updated_at.strftime("%H:%M:%S, %d/%m/%y") %>
+  Last update: <%= time_ago_in_words(article.updated_at) %> ago <br>
+  by <%= article.user.username %>
+ </div>
+</div>
+ <% end %>
+</div>
+</div>

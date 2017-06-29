@@ -1,3 +1,17 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.description %></p>
-<%= link_to "Все посты", articles_path %>
+
+<div class="col-sm-10 text-center">
+    <h2 class="page-header"><%= @article.title %></h2>
+    <p>дата: <%= @article.updated_at.strftime("%H:%M:%S, %d/%m/%y") %></p>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <%= @article.description %>
+        </div>
+    </div>
+</div>
+    <div class="btn-group pull-right" role="group" aria-label="...">
+        <%= link_to "Обновить", edit_article_path(@article), class: "btn btn-primary"%>
+        <%= link_to "Удалить", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %></td>
+        <%= link_to "Все посты", articles_path, class: "btn btn-primary" %>
+    </div>
+
+</div>

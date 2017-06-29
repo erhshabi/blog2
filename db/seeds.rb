@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+articles = Article.all
+articles.each do |article|
+    article.user_id = 1
+    article.save
+end
