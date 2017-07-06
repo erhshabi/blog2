@@ -1,0 +1,19 @@
+<div class="col-sm-offset-2 col-sm-8">
+  <% if  @category.errors.any? %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <% @category.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+  <% end %>
+  <%= form_for @category do |f| %>
+         <div class="form-group">
+          <%= f.label :Name %>
+          <%= f.text_field :name, class:"form-control", placeholder: "Categoy name" %>
+        </div>
+        <div class="col-offset-3">
+          <%= f.submit "Edit category", :class => "btn btn-md btn-success" %>
+        </div>
+  <% end %>
+</div>
