@@ -2,9 +2,9 @@
   <h1>All articles</h1>
   <h4><%= link_to "Новый пост", new_article_path %></h4>
  
-  <%= will_paginate @articles %>
  
   <div class="col-sm-offset-3 col-sm-6">
+   <%= will_paginate @articles %>
   
   <% @articles.each do |article| %>
   <div class="panel panel-default">
